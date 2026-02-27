@@ -54,7 +54,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          {['Tournée', 'Spécial 8 Mars', 'Speakers', 'Contact'].map((item) => (
+          {['Tournée', 'Événements', 'Contact'].map((item) => (
             <a key={item} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-sm font-medium text-white/70 hover:text-emerald-400 transition-colors uppercase tracking-widest">
               {item}
             </a>
@@ -80,7 +80,7 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 right-0 bg-[#0A192F] border-b border-white/10 p-6 flex flex-col gap-4 md:hidden"
           >
-            {['Tournée', 'Spécial 8 Mars', 'Speakers', 'Contact'].map((item) => (
+            {['Tournée', 'Événements', 'Contact'].map((item) => (
               <a key={item} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-lg font-medium text-white/70" onClick={() => setIsMobileMenuOpen(false)}>
                 {item}
               </a>
@@ -319,112 +319,51 @@ const Features = () => (
   </section>
 );
 
-const SpecialEvent = () => (
-  <section id="spécial-8-mars" className="py-24 bg-gradient-to-b from-[#0A192F] to-[#1B4D3E]/20 relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-8 opacity-10">
-          <Star className="w-32 h-32 text-emerald-400" />
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-xs font-bold tracking-widest uppercase mb-6">
-              <Star className="w-3 h-3" /> Événement Exclusif
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">SPÉCIAL <span className="text-emerald-400">8 MARS</span></h2>
-            <p className="text-white/70 text-lg mb-8 leading-relaxed">
-              À l'occasion de la Journée mondiale de la femme, nous célébrons les femmes qui transforment l'agriculture et l'innovation agroalimentaire. Un moment unique pour se connecter et échanger.
-            </p>
-            
-            <div className="space-y-4 mb-10">
-              <div className="flex items-center gap-4 text-white/80">
-                <Calendar className="text-emerald-400 w-5 h-5" />
-                <span>Samedi 9 Mars 2024</span>
-              </div>
-              <div className="flex items-center gap-4 text-white/80">
-                <Clock className="text-emerald-400 w-5 h-5" />
-                <span>21h30</span>
-              </div>
-              <div className="flex items-center gap-4 text-white/80">
-                <MapPin className="text-emerald-400 w-5 h-5" />
-                <span>Salle de conférence résidence Amane, Agadir (Dakhla)</span>
-              </div>
-            </div>
+const PreviousEvents = () => {
+  const events = [
+    { id: 1, title: "Agri Networking 2024", image: "/evenements/image1.jpeg" },
+    { id: 2, title: "Innovation Day", image: "/evenements/image2.jpeg" },
+    { id: 3, title: "B2B Meetings", image: "/evenements/image3.jpeg" },
+    { id: 4, title: "AgriTech Workshop", image: "/evenements/image4.jpeg" },
+    { id: 5, title: "Networking Night", image: "/evenements/image5.jpeg" },
+    { id: 6, title: "Future of Farming", image: "/evenements/image6.jpeg" },
+  ];
 
-            <div className="flex flex-wrap gap-4">
-              <div className="px-4 py-2 bg-[#1B4D3E] rounded-lg text-xs font-bold text-emerald-400 border border-emerald-400/20">AFFAIRINO</div>
-              <div className="px-4 py-2 bg-[#1B4D3E] rounded-lg text-xs font-bold text-emerald-400 border border-emerald-400/20">CISM SOUSS-MASSA</div>
-            </div>
-          </div>
-          
-          <div className="relative">
-            <div className="aspect-square rounded-3xl overflow-hidden border border-white/10">
+  return (
+    <section id="événements" className="py-24 bg-[#0A192F]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">ÉVÉNEMENTS <span className="text-emerald-400">PRÉCÉDENTS</span></h2>
+          <p className="text-white/60 max-w-xl mx-auto">Retour en images sur les moments forts de nos précédentes éditions.</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {events.map((event, index) => (
+            <motion.div
+              key={event.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="relative group overflow-hidden rounded-3xl aspect-video border border-white/5"
+            >
               <img 
-                src="https://picsum.photos/seed/agriwomen/800/800" 
-                alt="Femmes dans l'agriculture" 
-                className="w-full h-full object-cover opacity-60"
+                src={event.image} 
+                alt={event.title} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center p-8 text-center">
-                <p className="text-2xl font-serif italic text-white">"L'innovation portée par les femmes : Agroécologie, AgriTech et modèles durables"</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-transparent opacity-60" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                <h4 className="text-lg font-bold text-white">{event.title}</h4>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
-);
-
-const SpeakerCard = ({ name, role, image, delay }: any) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay, duration: 0.5 }}
-    className="relative group overflow-hidden rounded-3xl aspect-[4/5] border border-white/5"
-  >
-    <img 
-      src={image} 
-      alt={name} 
-      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      referrerPolicy="no-referrer"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/20 to-transparent opacity-90" />
-    <div className="absolute bottom-0 left-0 right-0 p-6">
-      <h4 className="text-xl font-bold text-white mb-1">{name}</h4>
-      <p className="text-emerald-400 text-xs font-bold uppercase tracking-widest leading-tight">{role}</p>
-    </div>
-  </motion.div>
-);
-
-const Speakers = () => (
-  <section id="speakers" className="py-24 bg-[#0A192F]">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-black text-white mb-4">INTERVENANTES <span className="text-emerald-400">D'HONNEUR</span></h2>
-        <p className="text-white/60 max-w-xl mx-auto">Des expertes partageant leur vision sur les défis et opportunités du secteur.</p>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <SpeakerCard 
-          name="Imane Douzi"
-          role="Directrice de la Cité d'Innovation Souss Massa"
-          image="https://picsum.photos/seed/imane/600/800"
-          delay={0.1}
-        />
-        <SpeakerCard 
-          name="Ikram Amhzoun"
-          role="Ingénieure Agronome Phytiatre"
-          image="https://picsum.photos/seed/ikram/600/800"
-          delay={0.2}
-        />
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Footer = () => (
   <footer id="contact" className="bg-[#0A192F] pt-24 pb-12 border-t border-white/5">
@@ -455,8 +394,7 @@ const Footer = () => (
           <ul className="space-y-4 text-sm text-white/50">
             <li><a href="#" className="hover:text-emerald-400">Accueil</a></li>
             <li><a href="#tournée" className="hover:text-emerald-400">La Tournée</a></li>
-            <li><a href="#spécial-8-mars" className="hover:text-emerald-400">Spécial 8 Mars</a></li>
-            <li><a href="#speakers" className="hover:text-emerald-400">Speakers</a></li>
+            <li><a href="#événements" className="hover:text-emerald-400">Événements</a></li>
           </ul>
         </div>
 
@@ -489,8 +427,7 @@ export default function App() {
       <main>
         <Hero />
         <Features />
-        <SpecialEvent />
-        <Speakers />
+        <PreviousEvents />
         
         {/* Call to Action Section */}
         <section className="py-24 px-6">
