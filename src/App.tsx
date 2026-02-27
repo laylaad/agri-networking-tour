@@ -322,7 +322,7 @@ const Features = () => (
 const PreviousEvents = () => {
   const events = [
     { id: 1, title: "Agri Networking 2024", image: "/evenements/image1.jpeg" },
-    { id: 2, title: "Innovation Day", image: "/evenements/image 2.jpeg" },
+    { id: 2, title: "Innovation Day", image: "/evenements/image2.jpeg" },
     { id: 3, title: "B2B Meetings", image: "/evenements/image3.jpeg" },
     { id: 4, title: "AgriTech Workshop", image: "/evenements/image4.jpeg" },
     { id: 5, title: "Networking Night", image: "/evenements/image5.jpeg" },
