@@ -50,7 +50,7 @@ const Navbar = () => {
           <img 
             src="/logo.png" 
             alt="Agri Networking Logo" 
-            className="h-10 w-auto object-contain"
+            className="h-20 w-auto object-contain scale-[2] origin-left"
             onError={(e) => {
               // Fallback if logo doesn't exist yet
               e.currentTarget.style.display = 'none';
@@ -231,9 +231,10 @@ const Hero = () => {
                   <div className="relative">
                     <select 
                       required
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white/50 focus:text-white focus:outline-none focus:border-emerald-500/50 transition-all appearance-none"
+                      defaultValue=""
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-5 py-4 text-white/80 focus:text-white focus:outline-none focus:border-emerald-500/50 transition-all appearance-none"
                     >
-                      <option value="" disabled selected className="bg-[#0A192F]">Motif d'inscription</option>
+                      <option value="" disabled className="bg-[#0A192F]">Motif d'inscription</option>
                       <option value="achat" className="bg-[#0A192F]">Achat produit</option>
                       <option value="consultation" className="bg-[#0A192F]">Consultation</option>
                       <option value="materiel" className="bg-[#0A192F]">Matériel</option>
@@ -406,7 +407,7 @@ const Footer = () => (
             <img 
               src="/logo.png" 
               alt="Agri Networking Logo" 
-              className="h-8 w-auto object-contain"
+              className="h-16 w-auto object-contain scale-[1.5] origin-left"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.nextElementSibling?.classList.remove('hidden');
