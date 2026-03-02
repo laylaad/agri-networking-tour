@@ -47,10 +47,22 @@ const Navbar = () => {
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-[#1B4D3E] rounded-lg flex items-center justify-center border border-emerald-400/30">
-            <Sprout className="text-emerald-400 w-6 h-6" />
+          <img 
+            src="/logo.png" 
+            alt="Agri Networking Logo" 
+            className="h-10 w-auto object-contain"
+            onError={(e) => {
+              // Fallback if logo doesn't exist yet
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.nextElementSibling?.classList.remove('hidden');
+            }}
+          />
+          <div className="hidden flex items-center gap-2">
+            <div className="w-10 h-10 bg-[#1B4D3E] rounded-lg flex items-center justify-center border border-emerald-400/30">
+              <Sprout className="text-emerald-400 w-6 h-6" />
+            </div>
+            <span className="text-white font-bold text-xl tracking-tighter uppercase">AGRI<span className="text-emerald-400"> NETWORKING</span></span>
           </div>
-          <span className="text-white font-bold text-xl tracking-tighter uppercase">AGRI<span className="text-emerald-400"> NETWORKING</span></span>
         </div>
 
         <div className="hidden md:flex items-center gap-8">
@@ -210,6 +222,26 @@ const Hero = () => {
                   </div>
                   <div className="relative">
                     <input 
+                      type="text" 
+                      placeholder="Organisme / Entreprise" 
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-emerald-500/50 transition-all"
+                    />
+                  </div>
+                  <div className="relative">
+                    <select 
+                      required
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white/50 focus:text-white focus:outline-none focus:border-emerald-500/50 transition-all appearance-none"
+                    >
+                      <option value="" disabled selected className="bg-[#0A192F]">Motif d'inscription</option>
+                      <option value="achat" className="bg-[#0A192F]">Achat produit</option>
+                      <option value="consultation" className="bg-[#0A192F]">Consultation</option>
+                      <option value="materiel" className="bg-[#0A192F]">Matériel</option>
+                    </select>
+                    <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20 pointer-events-none rotate-90" />
+                  </div>
+                  <div className="relative">
+                    <input 
                       type="email" 
                       placeholder="Email professionnel" 
                       required
@@ -322,7 +354,7 @@ const Features = () => (
 const PreviousEvents = () => {
   const events = [
     { id: 1, title: "Agri Networking 2024", image: "/evenements/image1.jpeg" },
-    { id: 2, title: "Innovation Day", image: "/evenements/image2.jpeg" },
+    { id: 2, title: "Innovation Day", image: "/evenements/image 2.jpeg" },
     { id: 3, title: "B2B Meetings", image: "/evenements/image3.jpeg" },
     { id: 4, title: "AgriTech Workshop", image: "/evenements/image4.jpeg" },
     { id: 5, title: "Networking Night", image: "/evenements/image5.jpeg" },
@@ -371,10 +403,21 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-1 md:col-span-2">
           <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-[#1B4D3E] rounded flex items-center justify-center border border-emerald-400/30">
-              <Sprout className="text-emerald-400 w-5 h-5" />
+            <img 
+              src="/logo.png" 
+              alt="Agri Networking Logo" 
+              className="h-8 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+            <div className="hidden flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#1B4D3E] rounded flex items-center justify-center border border-emerald-400/30">
+                <Sprout className="text-emerald-400 w-5 h-5" />
+              </div>
+              <span className="text-white font-bold text-xl tracking-tighter uppercase">AGRI<span className="text-emerald-400"> NETWORKING</span></span>
             </div>
-            <span className="text-white font-bold text-xl tracking-tighter uppercase">AGRI<span className="text-emerald-400"> NETWORKING</span></span>
           </div>
           <p className="text-white/50 max-w-sm mb-8">
             Accompagner la transformation du secteur agricole et créer des synergies durables à l'échelle nationale.
